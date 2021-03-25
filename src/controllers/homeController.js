@@ -1,6 +1,7 @@
-exports.paginaInicial = (_, res) => {
-  res.render('index', {
-    title: 'Este será o título da página',
-    numeros: [0, 1, 2, 3, 4]
-  });
+const Contato = require('../models/ContatoModel');
+
+exports.index = async (_, res) => {
+  const contatos = await Contato.buscaContatos();
+
+  res.render('index', { contatos });
 }

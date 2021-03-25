@@ -1,19 +1,43 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<%- include('includes/head') %> 
+<%- include('includes/nav') %> 
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Testes</title>
-</head>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8 my-3">
+      <h1 class="text-center">Agenda</h1>
+      <p class="text-center lead">Gerencie abaixo seus contatos.</p>
 
-<body>
-  <h1>
-    <%= title %>
-  </h1>
+      <%- include('includes/messages') %>
 
-  <script src="./assets/js/bundle.js"></script>
-</body>
+      <% if (contatos.length > 0) { %>
+        <div class="responsive-table">
+          <table class="table my-3">
+            <tr>
+              <th>Nome</th>
+              <th>E-mail</th>
+              <th>Telefone</th>
+              <th>Ações</th>
+            </tr>
+            <% contatos.forEach(contato => { %>
+              <tr>
+                <td><%= contato.nome + ' ' + contato.sobrenome %></td>
+                <td><%= contato.email %></td>
+                <td><%= contato.telefone %></td>
+                <td><div class="btn-group btn-group-sm" role="group">
+                  <a href="/contato/<%=contato._id%>" class="btn btn-outline-primary">Editar</a>
+                  <a href="/contato/delete/<%=contato._id%>" class="btn btn-outline-danger">Excluir</a>
+                </div></td>
+              </tr>
+            <% }) %>
+          </table>
+        </div>
+      <% } else { %>
+        <h5>Você não tem contatos adicionados. Que tal <a href="/contato">criar um novo</a>?</h5>
+      <% } %>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+</div>
 
-</html>
+<%- include('includes/foot') %> 

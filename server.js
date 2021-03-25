@@ -11,7 +11,7 @@ const SERVER_PORT = 3333;
 const app = express();
 
 console.log(`${color.yellow('[SERVER]')} Conectando ao banco de dados MongoDB...`);
-mongoose.connect(process.env.MONGODB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGODB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
   .then(() => {
     app.emit('done');
   })
