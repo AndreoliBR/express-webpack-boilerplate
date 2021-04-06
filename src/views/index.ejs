@@ -22,8 +22,8 @@
             <% contatos.forEach(contato => { %>
               <tr>
                 <td><%= contato.nome + ' ' + contato.sobrenome %></td>
-                <td><%= contato.email %></td>
-                <td><%= contato.telefone %></td>
+                <td><a href="mailto:<%= contato.email %>"><%= contato.email %></a></td>
+                <td><a href="tel:<%= contato.telefone %>"><%= contato.telefone %></a></td>
                 <td><div class="btn-group btn-group-sm" role="group">
                   <a href="/contato/<%=contato._id%>" class="btn btn-outline-primary">Editar</a>
                   <a href="/contato/delete/<%=contato._id%>" class="btn btn-outline-danger">Excluir</a>
